@@ -1,16 +1,99 @@
-# React + Vite
+# Habit Insight Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React app to track your daily habits and actually understand what your data is telling you.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What is this?
 
-## React Compiler
+Most habit apps just let you check boxes. This one tries to go a step further — it looks at what you've checked (or missed) and tells you something useful about it.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+We built this because we wanted to answer questions like:
+- Am I actually consistent, or does it just feel that way?
+- Which day of the week do I always fall off?
+- Have I been getting better or worse lately?
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+**Habit Management**
+Add habits, delete ones you don't need, and track each one on its own. Nothing fancy, just works.
+
+**Daily Tracking**
+Mark habits as done for today. Everything saves to localStorage so your data sticks around between sessions.
+
+**History View**
+See the last 7 to 30 days at a glance. Makes it easy to spot patterns without doing any mental math.
+
+**Insights**
+This is the main part of the project:
+- *Consistency Score* — what percentage of days did you actually follow through?
+- *Weak Day Detection* — which weekday do you miss the most?
+- *Streak Tracking* — your current streak and your longest one
+
+All of this is calculated from the stored dates, no backend needed.
+
+---
+
+## Tech Stack
+
+- React (functional components, hooks)
+- JavaScript ES6+
+- localStorage
+
+---
+
+## Data Model
+
+Each habit looks like this in storage:
+
+```json
+{
+  "id": "string",
+  "name": "string",
+  "completedDates": ["2026-04-20", "2026-04-22"]
+}
+```
+
+---
+
+## How the logic works
+
+**Consistency** — total completions divided by total days since the habit was added.
+
+**Weak Day** — whichever weekday shows up least in `completedDates`.
+
+**Streak** — walks backwards through dates to find consecutive days. Tracks both current and all-time best.
+
+---
+
+## Running it locally
+
+```bash
+git clone <your-repo-link>
+cd habit-insight-tracker
+npm install
+npm start
+```
+
+Should be live at `localhost:3000`.
+
+---
+
+## What's next
+
+- Add charts so the data is easier to read visually
+- Habit categories (health, work, personal, etc.)
+- Maybe a backend someday so data syncs across devices
+
+---
+
+## Contributors
+
+- **Subrat Kumar Sahu** — UI and components
+- **Suryanshu Tiwari** — logic and data handling
+
+---
+
+The goal was to keep it small and focused. Habit tracking doesn't need to be complicated — but it should at least tell you something worth knowing.
