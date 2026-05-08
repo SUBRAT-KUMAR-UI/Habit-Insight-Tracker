@@ -24,7 +24,7 @@ function Dashboard() {
         <h1 className="page-title">Dashboard</h1>
         <p className="empty-state">
           No habits yet. Go to{" "}
-          <a href="/habits" className="inline-link">Habits</a>{" "}
+          <a href="/Habits.jsx" className="inline-link">Habits</a>{" "}
           to add your first one.
         </p>
       </div>
