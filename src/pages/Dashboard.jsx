@@ -63,7 +63,6 @@ function Dashboard() {
                 habit={habit}
                 today={today}
                 onToggle={toggleHabitCompletion}
-                onDelete={() => {}}
                 streak={getStreak(habit)}
               />
             ))}
@@ -81,7 +80,6 @@ function Dashboard() {
               habit={habit}
               today={today}
               onToggle={toggleHabitCompletion}
-              onDelete={() => {}}
               streak={getStreak(habit)}
             />
           ))}
